@@ -1,7 +1,7 @@
 sealed class Figure(val property: Double)
 
 data class Circle(val radius: Double) : Figure(radius)
-data class Square(val sideLength: Double) : Figure(sideLength)
+data class Square(val side: Double) : Figure(side)
 
 enum class Operation {
     INSERT, GET_AREA, GET_PERIMETER, EXIT
@@ -41,7 +41,7 @@ class FigureServ : FigureService {
         return figures.map {
             when (it) {
                 is Circle -> 2 * Math.PI * it.radius
-                is Square -> 4 * it.sideLength
+                is Square -> 4 * it.side
             }
         }
     }
@@ -50,7 +50,7 @@ class FigureServ : FigureService {
         return figures.map {
             when (it) {
                 is Circle -> Math.PI * it.radius * it.radius
-                is Square -> it.sideLength * it.sideLength
+                is Square -> it.side * it.side
             }
         }
     }
